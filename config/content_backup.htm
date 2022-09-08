@@ -1,0 +1,443 @@
+<h1>About</h1>
+<p>cmsite</p>
+<h1>Brython</h1>
+<p><a href="https://en.wikipedia.org/wiki/Flag_of_the_Republic_of_China#Construction_details">ROC 國旗規格</a> <a href="https://zh.wikipedia.org/wiki/%E4%B8%AD%E5%8D%8E%E4%BA%BA%E6%B0%91%E5%85%B1%E5%92%8C%E5%9B%BD%E5%9B%BD%E6%97%97#%E8%A7%84%E6%A0%BC">PROC 國旗規格</a> <a href="https://en.wikipedia.org/wiki/Flag_of_the_United_States#Specifications">USA 國旗規格</a></p>
+<p><a href="https://gist.github.com/mdecourse/05930b1775b77293523b59b1bbb43e57">Gist Brython scripts</a></p>
+<p><a href="https://mde.tw/cp2021/content/%E8%A7%A3%E9%A1%8C%E7%B7%B4%E7%BF%92.html">解題練習</a></p>
+<p><a href="https://mde.tw/cp2021/content/Cango.html">Cango</a></p>
+<p>
+<script src="/static/brython.js">
+</script>
+<script src="/static/brython_stdlib.js"></script>
+</p>
+<!-- for ggame -->
+<p>
+<script src="/static/jquery-3.3.1.min.js"></script>
+<script src="/static/jquery-ui.1.12.1.min.js"></script>
+<script src="/static/pixi-3.0.5.min.js"></script>
+<script src="/static/buzz-1.2.1.js"></script>
+<script src="/static/bs.js"></script>
+<script src="/downloads/brython_modules.js"></script>
+</p>
+<!-- Cango 程式庫 -->
+<p>
+<script src="/static/Cango-24v03-min.js"></script>
+<script src="/static/CangoAxes-6v01-min.js"></script>
+<script src="/static/gearUtils-09.js"></script>
+<script src="/static/SVGpathUtils-6v03-min.js"></script>
+<script src="/static/sylvester.js"></script>
+<script src="/static/PrairieDraw.js"></script>
+</p>
+<!-- for Konva 程式庫 -->
+<p>
+<script src="/static/konva.min.js"></script>
+<script>
+window.onload=function(){
+brython({debug:1, pythonpath:['/static/','./../downloads/py/']});
+}
+</script>
+</p>
+<p><!-- 導入 FileSaver 與 filereader --></p>
+<p>
+<script src="/static/ace/FileSaver.min.js" type="text/javascript"></script>
+<script src="/static/ace/filereader.js" type="text/javascript"></script>
+</p>
+<p><!-- 導入 ace --></p>
+<p>
+<script src="/static/ace/ace.js" type="text/javascript"></script>
+<script src="/static/ace/ext-language_tools.js" type="text/javascript"></script>
+<script src="/static/ace/mode-python3.js" type="text/javascript"></script>
+<script src="/static/ace/snippets/python.js" type="text/javascript"></script>
+</p>
+<p><!-- 請注意, 這裡使用 Javascript 將 localStorage["py_src"] 中存在近端瀏覽器的程式碼, 由使用者決定存檔名稱--></p>
+<p>
+<script type="text/javascript">
+function doSave(storage_id, filename){
+    var blob = new Blob([localStorage[storage_id]], {type: "text/plain;charset=utf-8"});
+    filename = document.getElementById(filename).value
+    saveAs(blob, filename+".py");
+}
+</script>
+</p>
+<p><button id="add1to100">add 1 to 100</button><button id="p261">p261</button><button id="rocflag">ROC flag</button><button id="procflag">PROC flag</button><button id="usaflag">USA flag</button><button id="drawgrid">Draw Grid</button><button id="grid_rect">Random Rect</button><button id="rect_walk">Rect Walk</button><button id="rect_u_walk">Rect U Walk</button><button id="rect_rev_u_walk">Rect rev U Walk</button><button id="sgcr">單節貪食蛇</button><button id="cfrr">5 個紅點方塊</button><button id="snake">Snake</button><button id="bsnake">BSnake</button><button id="auto_guess">auto_guess</button><button id="ball">ball</button><button id="bezier">bezier</button><button id="big_lotto">big_lotto</button><button id="brython_kw">brython_kw</button><button id="bunny">bunny</button><button id="cango_spur">cango_spur</button><button id="cango_spur1">cango_spur1</button><button id="cango_three_gears">cango_three_gears</button><button id="clear">clear</button><button id="clock">clock</button><button id="convert_temp">convert_temp</button><button id="deepmerge">deepmerge</button><button id="display_stl">display_stl</button><button id="draw">draw</button><button id="ex1">ex1</button><button id="ex2">ex2</button><button id="ex3">ex3</button><button id="ex4">ex4</button><button id="fibo">fibo</button><button id="fourbar">fourbar</button><button id="guess_a_number">guess_a_number</button><button id="hw1_1">hw1_1</button><button id="hw1_2">hw1_2</button><button id="keycode">Keycode</button><button id="knova1">knova1</button><button id="merge3">merge3</button><button id="power_lotto">power_lotto</button><button id="spur">spur</button><button id="spur_w_form">spur_w_form</button><button id="stl_binary_ascii">stl_binary_ascii</button><button id="stl_writer">stl_writer</button><button id="tetris">Tetris</button><button id="turtle1">turtle1</button><button id="turtle2">turtle2</button><button id="turtle3">turtle3</button><button id="turtle4">turtle4</button><button id="turtle5">turtle5</button><button id="turtle6">turtle6</button><button id="turtle7">turtle7</button><button id="turtle8">turtle8</button><button id="twl_link_ik">twl_link_ik</button><button id="webcam">webcam</button><button id="websocket">websocket</button><button id="ycqsort">ycqsort</button></p>
+<p><!-- ######################  editor1 開始 ###################### --></p>
+<p><!-- 用來顯示程式碼的 editor 區域 --></p>
+<div id="kw_editor1" style="width: 600px; height: 300px;"></div>
+<p><!-- 以下的表單與按鈕與前面的 Javascript doSave 函式以及 FileSaver.min.js 互相配合 --></p>
+<p><!-- 存擋表單開始 --></p>
+<form><label>Filename: <input id="kw_filename" placeholder="input file name" type="text"/>.py</label> <input onclick="doSave('kw_py_src1', 'kw_filename1');" type="submit" value="Save"/></form>
+<p><!-- 存擋表單結束 --></p>
+<p></p>
+<p><!-- 執行與清除按鈕開始 --></p>
+<p><button id="kw_run1">Run</button> <button id="kw_show_console1">Output</button> <button id="kw_clear_console1">清除輸出區</button><button id="clear_bd1">清除繪圖區</button><button onclick="window.location.reload()">Reload</button></p>
+<p><!-- 執行與清除按鈕結束 --></p>
+<p></p>
+<p><!-- 程式執行 ouput 區 --></p>
+<div style="width: 100%; height: 100%;"><textarea autocomplete="off" id="kw_console1"></textarea></div>
+<p><!-- Brython 程式執行的結果, 都以 brython_div 作為切入位置 --></p>
+<p><!-- 這裡的畫布 id 為 brython_div --></p>
+<div id="brython_div"></div>
+<!-- graphics-column is for ggame -->
+<div class="col-md-0" height="1" id="graphics-column" width="1"></div>
+<p><!-- ######################  editor1 結束 ###################### --></p>
+<p><!-- 以下可以開始利用 editor1 的設定編寫對應 Brython 程式 -->
+<script type="text/python3">
+from browser import document as doc
+import ace
+
+# 清除畫布
+def clear_bd1(ev):
+    # 注意這裡清除的畫布 id 為 brython_div
+    bd = doc["brython_div"]
+    bd.clear()
+Ace1 = ace.Editor(editor_id="kw_editor1", console_id="kw_console1", container_id="kw__container1", storage_id="kw_py_src1" )
+# 從 gist 取出程式碼後, 放入 editor 作為 default 程式
+def run1():
+    # 利用 get 取下 src 變數值
+    try:
+        url = doc.query["src"]
+    except:
+        url = "https://gist.githubusercontent.com/mdecourse/0229a8a017091476a79700b8a190f185/raw/c3a6deaf717f8f2739a4b1392a5ab10936e9693a/from_1_add_to_10_1.py"
+    prog = open(url).read()
+
+    # 將程式載入編輯區
+    Ace1.editor.setValue(prog)
+    Ace1.editor.scrollToRow(0)
+    Ace1.editor.gotoLine(0)
+    # 直接執行程式
+    #ns = {'__name__':'__main__'}
+    #exec(prog, ns)
+    # 按下 run 按鈕
+    Ace1.run()
+
+# 執行程式, 顯示輸出結果與清除輸出結果及對應按鈕綁定
+doc['kw_run1'].bind('click', Ace1.run)
+doc['kw_show_console1'].bind('click', Ace1.show_console)
+doc['kw_clear_console1'].bind('click', Ace1.clear_console)
+doc['clear_bd1'].bind('click', clear_bd1)
+# 呼叫函式執行
+run1()
+</script>
+<!-- 以上為內建程式, 頁面可透過 ?src=gist_url 執行 --></p>
+<p><!-- add 1 to 100 開始 -->
+<script type="text/python3">
+from browser import document as doc
+import ace
+
+# 清除畫布
+def clear_bd1(ev):
+    bd = doc["brython_div1"]
+    bd.clear()
+
+# 利用 ace 中的 Editor 建立 Ace 物件, 其中的輸入變數分別對應到頁面中的編輯區物件
+Ace2 = ace.Editor(editor_id="kw_editor1", console_id="kw_console1", container_id="kw__container1", storage_id="kw_py_src1" )
+
+class button2:
+    def __init__(self, url):
+        self.url = url
+
+    # 記得加入 event 輸入變數
+    def do(self,ev):
+        Ace2.editor.setValue(open(self.url).read())
+        Ace2.editor.scrollToRow(0)
+        Ace2.editor.gotoLine(0)
+        Ace2.run()
+
+add1to100_url = "https://gist.githubusercontent.com/mdecourse/0229a8a017091476a79700b8a190f185/raw/c48e37714f055c3a0027cbfef59e442a6ef659b9/from_1_add_to_100_1.py"
+add1to100 = button2(add1to100_url)
+doc["add1to100"].bind('click', add1to100.do)
+################################# p261 start 
+p261_url = "https://gist.githubusercontent.com/mdecourse/2f56974a40da7a218dbaef376a5b4ca4/raw/980606effcd29635307d6474718cd4a7ef016747/p261.py"
+p261 = button2(p261_url)
+doc["p261"].bind('click', p261.do)
+################################## p261 end
+################################## rocflag start
+rocflag_url = "https://gist.githubusercontent.com/mdecourse/2f56974a40da7a218dbaef376a5b4ca4/raw/03dd57e75b6b5be2b3d64c4fd15758e80cb9bf36/roc_flag.py"
+rocflag = button2(rocflag_url)
+doc["rocflag"].bind("click", rocflag.do)
+################################## rocflag end
+################################## procflag start
+procflag_url = "https://gist.githubusercontent.com/mdecourse/2f56974a40da7a218dbaef376a5b4ca4/raw/03dd57e75b6b5be2b3d64c4fd15758e80cb9bf36/proc_flag.py"
+procflag = button2(procflag_url)
+doc["procflag"].bind("click", procflag.do)
+################################## rocflag end
+################################## drawgrid start
+drawgrid_url = "https://gist.githubusercontent.com/mdecourse/2f56974a40da7a218dbaef376a5b4ca4/raw/070f424f2e9a99617009af216762163f66628e6d/draw_grid.py"
+drawgrid = button2(drawgrid_url)
+doc["drawgrid"].bind("click", drawgrid.do)
+################################## drawgrid end
+################################## grid_rect start
+grid_rect_url = "https://gist.githubusercontent.com/mdecourse/2f56974a40da7a218dbaef376a5b4ca4/raw/f3683ed24646f63625b616e9cb8e61a9a08ae9be/draw_grid_random_rect.py"
+grid_rect = button2(grid_rect_url)
+doc["grid_rect"].bind("click", grid_rect.do)
+################################## grid_rect end
+################################## rect_walk start
+rect_walk_url = "https://gist.githubusercontent.com/mdecourse/2f56974a40da7a218dbaef376a5b4ca4/raw/fdf9749488a59f00c2398aede8b6cbe8c0ed5d81/rect_walk.py"
+rect_walk = button2(rect_walk_url)
+doc["rect_walk"].bind("click", rect_walk.do)
+################################## rect_walk end
+################################## rect_walk start
+rect_u_walk_url = "https://gist.githubusercontent.com/mdecourse/2f56974a40da7a218dbaef376a5b4ca4/raw/63645d3f5823fd22bdb02e840e46e551afee4087/rect_u_walk.py"
+rect_u_walk = button2(rect_u_walk_url)
+doc["rect_u_walk"].bind("click", rect_u_walk.do)
+################################## rect_walk end
+################################## rect_rev_u_walk start
+rect_rev_u_walk_url = "https://gist.githubusercontent.com/mdecourse/2f56974a40da7a218dbaef376a5b4ca4/raw/165e7792091d4b91b9923592242bfaf28258a719/rect_rev_u_walk.py"
+rect_rev_u_walk = button2(rect_rev_u_walk_url)
+doc["rect_rev_u_walk"].bind("click", rect_rev_u_walk.do)
+################################## rect_rev_u_walk end
+################################## single green chasing red start
+sgcr_url = "https://gist.githubusercontent.com/mdecourse/2f56974a40da7a218dbaef376a5b4ca4/raw/9f7c1cda3a51b061cde00d104054fb3ce19ffd1a/single_green_chasing_red.py"
+sgcr = button2(sgcr_url)
+doc["sgcr"].bind("click", sgcr.do)
+################################## single green chasing red end
+################################## chasing 5 red rect start
+# execute only one time
+#cfrr_url = "https://gist.githubusercontent.com/mdecourse/2f56974a40da7a218dbaef376a5b4ca4/raw/c43844d62a0bd7eb6617d5222ba93b5de033a63f/chasing_5_red_rect.py"
+# continuously execution
+cfrr_url = "https://gist.githubusercontent.com/mdecourse/2f56974a40da7a218dbaef376a5b4ca4/raw/7e0563617649a2532ed0fc903858e135cbcedcd0/chasing_5_red_rect.py"
+cfrr = button2(cfrr_url)
+doc["cfrr"].bind("click", cfrr.do)
+################################## chasing 5 red rect end
+################################## usaflag start
+usaflag_url = "https://gist.githubusercontent.com/mdecourse/2f56974a40da7a218dbaef376a5b4ca4/raw/144b62fa07987d5ab6f369ae3661c645405e1872/usaflag.py"
+usaflag = button2(usaflag_url)
+doc["usaflag"].bind("click", usaflag.do)
+################################## usaflag end
+################################## snake start
+snake_url = "https://gist.githubusercontent.com/mdecourse/d55158478f4f8fcbfedd455f8be8c7b6/raw/f29309745a98687ed5c41cf90d28ef25a1e48dd4/snake_brython_div.py"
+snake = button2(snake_url)
+doc["snake"].bind("click", snake.do)
+################################## snake end
+################################## bsnake start
+bsnake_url = "https://gist.githubusercontent.com/mdecourse/2a8f213b6858a40481d17556c8a2fe86/raw/0a4a824493865dc7cf56977d03c9438d002b4268/kmlo_snakey.py"
+bsnake = button2(bsnake_url)
+doc["bsnake"].bind("click", bsnake.do)
+################################## bsnake end
+################################## auto_guess start
+auto_guess_url = "https://gist.githubusercontent.com/mdecourse/05930b1775b77293523b59b1bbb43e57/raw/cb022783696ed8f2e8050f1427a05e652d5fa686/auto_guess.py"
+auto_guess = button2(auto_guess_url)
+doc["auto_guess"].bind("click", auto_guess.do)
+################################## auto_guess end
+################################## ball start
+ball_url = "https://gist.githubusercontent.com/mdecourse/05930b1775b77293523b59b1bbb43e57/raw/cb022783696ed8f2e8050f1427a05e652d5fa686/ball.py"
+ball = button2(ball_url)
+doc["ball"].bind("click", ball.do)
+################################## ball end
+################################## bezier start
+bezier_url = "https://gist.githubusercontent.com/mdecourse/05930b1775b77293523b59b1bbb43e57/raw/79794cbd97d0846e2c9df14d54118d5e00a97a22/bezier.py"
+bezier = button2(bezier_url)
+doc["bezier"].bind("click", bezier.do)
+################################## bezier end
+################################## big_lotto start
+big_lotto_url = "https://gist.githubusercontent.com/mdecourse/05930b1775b77293523b59b1bbb43e57/raw/cb022783696ed8f2e8050f1427a05e652d5fa686/big_lotto.py"
+big_lotto = button2(big_lotto_url)
+doc["big_lotto"].bind("click", big_lotto.do)
+################################## big_lotto end
+################################## brython_kw start
+brython_kw_url = "https://gist.githubusercontent.com/mdecourse/05930b1775b77293523b59b1bbb43e57/raw/cb022783696ed8f2e8050f1427a05e652d5fa686/brython_kw.py"
+brython_kw = button2(brython_kw_url)
+doc["brython_kw"].bind("click", brython_kw.do)
+################################## brython_kw end
+################################## bunny start
+bunny_url = "https://gist.githubusercontent.com/mdecourse/05930b1775b77293523b59b1bbb43e57/raw/cb022783696ed8f2e8050f1427a05e652d5fa686/bunny.py"
+bunny = button2(bunny_url)
+doc["bunny"].bind("click", bunny.do)
+################################## bunny end
+################################## cango_spur start
+cango_spur_url = "https://gist.githubusercontent.com/mdecourse/05930b1775b77293523b59b1bbb43e57/raw/cb022783696ed8f2e8050f1427a05e652d5fa686/cango_spur.py"
+cango_spur = button2(cango_spur_url)
+doc["cango_spur"].bind("click", cango_spur.do)
+################################## cango_spur end
+################################## cango_spur1 start
+cango_spur1_url = "https://gist.githubusercontent.com/mdecourse/05930b1775b77293523b59b1bbb43e57/raw/cb022783696ed8f2e8050f1427a05e652d5fa686/cango_spur1.py"
+cango_spur1 = button2(cango_spur1_url)
+doc["cango_spur1"].bind("click", cango_spur1.do)
+################################## cango_spur1 end
+################################## cango_three_gears start
+cango_three_gears_url = "https://gist.githubusercontent.com/mdecourse/05930b1775b77293523b59b1bbb43e57/raw/cb022783696ed8f2e8050f1427a05e652d5fa686/cango_three_gears.py"
+cango_three_gears = button2(cango_three_gears_url)
+doc["cango_three_gears"].bind("click", cango_three_gears.do)
+################################## cango_three_gears end
+################################## clear start
+clear_url = "https://gist.githubusercontent.com/mdecourse/05930b1775b77293523b59b1bbb43e57/raw/cb022783696ed8f2e8050f1427a05e652d5fa686/clear.py"
+clear = button2(clear_url)
+doc["clear"].bind("click", clear.do)
+################################## clear end
+################################## clock start
+clock_url = "https://gist.githubusercontent.com/mdecourse/05930b1775b77293523b59b1bbb43e57/raw/cb022783696ed8f2e8050f1427a05e652d5fa686/clock.py"
+clock = button2(clock_url)
+doc["clock"].bind("click", clock.do)
+################################## clock end
+################################## convert_temp start
+convert_temp_url = "https://gist.githubusercontent.com/mdecourse/05930b1775b77293523b59b1bbb43e57/raw/cb022783696ed8f2e8050f1427a05e652d5fa686/convert_temp.py"
+convert_temp = button2(convert_temp_url)
+doc["convert_temp"].bind("click", convert_temp.do)
+################################## convert_temp end
+################################## display_stl start
+display_stl_url = "https://gist.githubusercontent.com/mdecourse/05930b1775b77293523b59b1bbb43e57/raw/cb022783696ed8f2e8050f1427a05e652d5fa686/display_stl.py"
+display_stl = button2(display_stl_url)
+doc["display_stl"].bind("click", display_stl.do)
+################################## display_stl end
+################################## draw start
+draw_url = "https://gist.githubusercontent.com/mdecourse/05930b1775b77293523b59b1bbb43e57/raw/cb022783696ed8f2e8050f1427a05e652d5fa686/draw.py"
+draw = button2(draw_url)
+doc["draw"].bind("click", draw.do)
+################################## draw end
+################################## ex1 start
+ex1_url = "https://gist.githubusercontent.com/mdecourse/05930b1775b77293523b59b1bbb43e57/raw/cb022783696ed8f2e8050f1427a05e652d5fa686/ex1.py"
+ex1 = button2(ex1_url)
+doc["ex1"].bind("click", ex1.do)
+################################## ex1 end
+################################## ex2 start
+ex2_url = "https://gist.githubusercontent.com/mdecourse/05930b1775b77293523b59b1bbb43e57/raw/cb022783696ed8f2e8050f1427a05e652d5fa686/ex2.py"
+ex2 = button2(ex2_url)
+doc["ex2"].bind("click", ex2.do)
+################################## ex2 end
+################################## ex3 start
+ex3_url = "https://gist.githubusercontent.com/mdecourse/05930b1775b77293523b59b1bbb43e57/raw/cb022783696ed8f2e8050f1427a05e652d5fa686/ex3.py"
+ex3 = button2(ex3_url)
+doc["ex3"].bind("click", ex3.do)
+################################## ex3 end
+################################## ex4 start
+ex4_url = "https://gist.githubusercontent.com/mdecourse/05930b1775b77293523b59b1bbb43e57/raw/cb022783696ed8f2e8050f1427a05e652d5fa686/ex4.py"
+ex4 = button2(ex4_url)
+doc["ex4"].bind("click", ex4.do)
+################################## ex4 end
+################################## fourbar start
+fourbar_url = "https://gist.githubusercontent.com/mdecourse/05930b1775b77293523b59b1bbb43e57/raw/fa232853da824f6dd5ae1f61a96543e6106c04b5/fourbar.py"
+fourbar = button2(fourbar_url)
+doc["fourbar"].bind("click", fourbar.do)
+################################## fourbar end
+################################## guess_a_number start
+guess_a_number_url = "https://gist.githubusercontent.com/mdecourse/05930b1775b77293523b59b1bbb43e57/raw/cb022783696ed8f2e8050f1427a05e652d5fa686/guess_a_number.py"
+guess_a_number = button2(guess_a_number_url)
+doc["guess_a_number"].bind("click", guess_a_number.do)
+################################## guess_a_number end
+################################## hw1_1 start
+hw1_1_url = "https://gist.githubusercontent.com/mdecourse/05930b1775b77293523b59b1bbb43e57/raw/cb022783696ed8f2e8050f1427a05e652d5fa686/hw1-1.py"
+hw1_1 = button2(hw1_1_url)
+doc["hw1_1"].bind("click", hw1_1.do)
+################################## hw1_1 end
+################################## hw1_2 start
+hw1_2_url = "https://gist.githubusercontent.com/mdecourse/05930b1775b77293523b59b1bbb43e57/raw/cb022783696ed8f2e8050f1427a05e652d5fa686/hw1-2.py"
+hw1_2 = button2(hw1_2_url)
+doc["hw1_2"].bind("click", hw1_2.do)
+################################## hw1-2 end
+################################## knova1 start
+knova1_url = "https://gist.githubusercontent.com/mdecourse/05930b1775b77293523b59b1bbb43e57/raw/cb022783696ed8f2e8050f1427a05e652d5fa686/konva1.py"
+knova1 = button2(knova1_url)
+doc["knova1"].bind("click", knova1.do)
+################################## knova1 end
+################################## power_lotto start
+power_lotto_url = "https://gist.githubusercontent.com/mdecourse/05930b1775b77293523b59b1bbb43e57/raw/cb022783696ed8f2e8050f1427a05e652d5fa686/power_lotto.py"
+power_lotto = button2(power_lotto_url)
+doc["power_lotto"].bind("click", power_lotto.do)
+################################## power_lotto end
+################################## spur start
+spur_url = "https://gist.githubusercontent.com/mdecourse/05930b1775b77293523b59b1bbb43e57/raw/e6d0cc9302f7b43bd36321d69c2433bec2cbcfd4/spur.py"
+spur = button2(spur_url)
+doc["spur"].bind("click", spur.do)
+################################## spur end
+################################## spur_w_form start
+spur_w_form_url = "https://gist.githubusercontent.com/mdecourse/05930b1775b77293523b59b1bbb43e57/raw/e6d0cc9302f7b43bd36321d69c2433bec2cbcfd4/spur_w_form.py"
+spur_w_form = button2(spur_w_form_url)
+doc["spur_w_form"].bind("click", spur_w_form.do)
+################################## spur_w_form end
+################################## stl_binary_ascii start
+stl_binary_ascii_url = "https://gist.githubusercontent.com/mdecourse/05930b1775b77293523b59b1bbb43e57/raw/cb022783696ed8f2e8050f1427a05e652d5fa686/stl_binary_ascii.py"
+stl_binary_ascii = button2(stl_binary_ascii_url)
+doc["stl_binary_ascii"].bind("click", stl_binary_ascii.do)
+################################## stl_binary_ascii end
+################################## stl_writer start
+stl_writer_url = "https://gist.githubusercontent.com/mdecourse/05930b1775b77293523b59b1bbb43e57/raw/cb022783696ed8f2e8050f1427a05e652d5fa686/stl_writer.py"
+stl_writer = button2(stl_writer_url)
+doc["stl_writer"].bind("click", stl_writer.do)
+################################## stl_writer end
+################################## turtle1 start
+turtle1_url = "https://gist.githubusercontent.com/mdecourse/05930b1775b77293523b59b1bbb43e57/raw/cb022783696ed8f2e8050f1427a05e652d5fa686/turtle1.py"
+turtle1 = button2(turtle1_url)
+doc["turtle1"].bind("click", turtle1.do)
+################################## turtle1 end
+################################## turtle2 start
+turtle2_url = "https://gist.githubusercontent.com/mdecourse/05930b1775b77293523b59b1bbb43e57/raw/cb022783696ed8f2e8050f1427a05e652d5fa686/turtle2.py"
+turtle2 = button2(turtle2_url)
+doc["turtle2"].bind("click", turtle2.do)
+################################## turtle2 end
+################################## turtle3 start
+turtle3_url = "https://gist.githubusercontent.com/mdecourse/05930b1775b77293523b59b1bbb43e57/raw/cb022783696ed8f2e8050f1427a05e652d5fa686/turtle3.py"
+turtle3 = button2(turtle3_url)
+doc["turtle3"].bind("click", turtle3.do)
+################################## turtle3 end
+################################## turtle4 start
+turtle4_url = "https://gist.githubusercontent.com/mdecourse/05930b1775b77293523b59b1bbb43e57/raw/cb022783696ed8f2e8050f1427a05e652d5fa686/turtle4.py"
+turtle4 = button2(turtle4_url)
+doc["turtle4"].bind("click", turtle4.do)
+################################## turtle4 end
+################################## turtle5 start
+turtle5_url = "https://gist.githubusercontent.com/mdecourse/05930b1775b77293523b59b1bbb43e57/raw/cb022783696ed8f2e8050f1427a05e652d5fa686/turtle5.py"
+turtle5 = button2(turtle5_url)
+doc["turtle5"].bind("click", turtle5.do)
+################################## turtle5 end
+################################## turtle6 start
+turtle6_url = "https://gist.githubusercontent.com/mdecourse/05930b1775b77293523b59b1bbb43e57/raw/cb022783696ed8f2e8050f1427a05e652d5fa686/turtle6.py"
+turtle6 = button2(turtle6_url)
+doc["turtle6"].bind("click", turtle6.do)
+################################## turtle6 end
+################################## turtle7 start
+turtle7_url = "https://gist.githubusercontent.com/mdecourse/05930b1775b77293523b59b1bbb43e57/raw/cb022783696ed8f2e8050f1427a05e652d5fa686/turtle7.py"
+turtle7 = button2(turtle7_url)
+doc["turtle7"].bind("click", turtle7.do)
+################################## turtle7 end
+################################## turtle8 start
+turtle8_url = "https://gist.githubusercontent.com/mdecourse/05930b1775b77293523b59b1bbb43e57/raw/cb022783696ed8f2e8050f1427a05e652d5fa686/turtle8.py"
+turtle8 = button2(turtle8_url)
+doc["turtle8"].bind("click", turtle8.do)
+################################## turtle8 end
+################################## twl_link_ik start
+twl_link_ik_url = "https://gist.githubusercontent.com/mdecourse/05930b1775b77293523b59b1bbb43e57/raw/cb022783696ed8f2e8050f1427a05e652d5fa686/twl_link_ik.py"
+twl_link_ik = button2(twl_link_ik_url)
+doc["twl_link_ik"].bind("click", twl_link_ik.do)
+################################## twl_link_ik end
+################################## webcam start
+webcam_url = "https://gist.githubusercontent.com/mdecourse/05930b1775b77293523b59b1bbb43e57/raw/cb022783696ed8f2e8050f1427a05e652d5fa686/webcam.py"
+webcam = button2(webcam_url)
+doc["webcam"].bind("click", webcam.do)
+################################## webcam end
+################################## ycqsort start
+ycqsort_url = "https://gist.githubusercontent.com/mdecourse/05930b1775b77293523b59b1bbb43e57/raw/cb022783696ed8f2e8050f1427a05e652d5fa686/ycqsort.py"
+ycqsort = button2(ycqsort_url)
+doc["ycqsort"].bind("click", ycqsort.do)
+################################## ycqsort end
+################################## fibo start
+fibo_url = "https://gist.githubusercontent.com/mdecourse/05930b1775b77293523b59b1bbb43e57/raw/fa232853da824f6dd5ae1f61a96543e6106c04b5/fibo_ex.py"
+fibo = button2(fibo_url)
+doc["fibo"].bind("click", fibo.do)
+################################## fibo end
+################################## deepmerge start
+deepmerge_url = "https://gist.githubusercontent.com/mdecourse/05930b1775b77293523b59b1bbb43e57/raw/e89e0f978a015bf9361270a389a5b84e6244ed5b/deepmerge.py"
+deepmerge = button2(deepmerge_url)
+doc["deepmerge"].bind("click", deepmerge.do)
+################################## deepmerge end
+################################## merge3 start
+merge3_url = "https://gist.githubusercontent.com/mdecourse/05930b1775b77293523b59b1bbb43e57/raw/8a7452a451e57e4de720f22fc2fc8abd6aac0bc8/merge3.py"
+merge3 = button2(merge3_url)
+doc["merge3"].bind("click", merge3.do)
+################################## merge3 end
+################################## websocket start
+websocket_url = "https://gist.githubusercontent.com/mdecourse/05930b1775b77293523b59b1bbb43e57/raw/86dda666271974d6c520086700db14a2124f0ae8/websocket.py"
+websocket = button2(websocket_url)
+doc["websocket"].bind("click", websocket.do)
+################################## websocket end
+################################## keycode start
+keycode_url = "https://gist.githubusercontent.com/mdecourse/05930b1775b77293523b59b1bbb43e57/raw/ba159101705aaf8ba182a442b455425a48a85610/keycode.py"
+keycode = button2(keycode_url)
+doc["keycode"].bind("click", keycode.do)
+################################## keycode end
+################################## tetris start
+tetris_url = "https://gist.githubusercontent.com/mdecourse/05930b1775b77293523b59b1bbb43e57/raw/738223b424c3f5f12961070aa8a75185177420b6/pygame_to_brython_tetris.py"
+tetris = button2(tetris_url)
+doc["tetris"].bind("click", tetris.do)
+################################## tetris end
+</script>
+</p>
