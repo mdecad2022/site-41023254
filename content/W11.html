@@ -191,7 +191,7 @@ def run1():
     try:
         url = doc.query["src"]
     except:
-        url = "https://gist.githubusercontent.com/41023254/5cd2b6ab1160949f1dec6a286ffb9524/raw/6ad523c99f89acece49780efb43d07f87eb041f2/W11"
+        url = "https://gist.githubusercontent.com/41023254/5cd2b6ab1160949f1dec6a286ffb9524/raw/bb15b8cf5a6749c6d4962cd58a9ca490fa3c1a6e/W11"
     prog = open(url).read()
 
     # 將程式載入編輯區
@@ -226,7 +226,7 @@ def clear_bd1(ev):
 # 利用 ace 中的 Editor 建立 Ace 物件, 其中的輸入變數分別對應到頁面中的編輯區物件
 Ace2 = ace.Editor(editor_id="kw_editor1", console_id="kw_console1", container_id="kw__container1", storage_id="kw_py_src1" )
 
-add1to100_url = "https://gist.githubusercontent.com/41023254/5cd2b6ab1160949f1dec6a286ffb9524/raw/6ad523c99f89acece49780efb43d07f87eb041f2/W11?"
+add1to100_url = "https://gist.githubusercontent.com/41023254/5cd2b6ab1160949f1dec6a286ffb9524/raw/bb15b8cf5a6749c6d4962cd58a9ca490fa3c1a6e/W11"
 
 # 從 gist 取得程式碼
 add_src = open(add1to100_url).read()
