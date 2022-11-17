@@ -286,9 +286,10 @@ doc["aitetris"].bind("click", aitetris.do)
 <h2>Onshape</h2>
 <h2>NX2027</h2>
 <h1>HW</h1>
-<h2>w10</h2>
+<h2>W10</h2>
 <p>這個頁面 demo 如何在同一頁面下納入多個線上 Ace 編輯器與執行按鈕.</p>
-<p>將 iterable 與 iterator <a href="https://home.gamer.com.tw/creationDetail.php?sn=4337438">相關說明</a>, 利用 Brython 與 Ace Editor 整理在這個頁面.</p>
+<p><button id="add1to100">W10</button></p>
+<p></p>
 <!-- 導入 brython 程式庫 -->
 <script src="/static/brython.js"></script>
 <script src="/static/brython_stdlib.js"></script>
@@ -357,6 +358,7 @@ doc['clear_bd1'].bind('click', clear_bd1)
 run1()
 </script>
 </p>
+<p><!-- add 1 to 100 開始 -->
 <script type="text/python3">
 from browser import document as doc
 import ace
@@ -381,6 +383,8 @@ def add(ev):
 # id 為 "add1to100" 的按鈕點按時, 執行 add 方法
 doc["add1to100"].bind('click', add)
 </script>
+</p>
+<p><!-- add 1 to 100 結束--></p>
 <!-- editor1 開始 -->
 <p><!-- 用來顯示程式碼的 editor 區域 --></p>
 <div id="kw_editor1" style="width: 600px; height: 300px;"></div>
@@ -459,9 +463,10 @@ run1()
 <script src="/static/SVGpathUtils-6v03-min.js"></script>
 <script src="/static/sylvester.js"></script>
 <script src="/static/PrairieDraw.js"></script>
-</p><h2>w11</h2>
+</p><h2>W11</h2>
 <p>這個頁面 demo 如何在同一頁面下納入多個線上 Ace 編輯器與執行按鈕.</p>
-<p>將 iterable 與 iterator <a href="https://home.gamer.com.tw/creationDetail.php?sn=4337438">相關說明</a>, 利用 Brython 與 Ace Editor 整理在這個頁面.</p>
+<p><button id="add1to100">W11</button></p>
+<p></p>
 <!-- 導入 brython 程式庫 -->
 <script src="/static/brython.js"></script>
 <script src="/static/brython_stdlib.js"></script>
@@ -530,6 +535,7 @@ doc['clear_bd1'].bind('click', clear_bd1)
 run1()
 </script>
 </p>
+<p><!-- add 1 to 100 開始 -->
 <script type="text/python3">
 from browser import document as doc
 import ace
@@ -542,7 +548,7 @@ def clear_bd1(ev):
 # 利用 ace 中的 Editor 建立 Ace 物件, 其中的輸入變數分別對應到頁面中的編輯區物件
 Ace2 = ace.Editor(editor_id="kw_editor1", console_id="kw_console1", container_id="kw__container1", storage_id="kw_py_src1" )
 
-add1to100_url = "https://gist.githubusercontent.com/41023254/5cd2b6ab1160949f1dec6a286ffb9524/raw/6ad523c99f89acece49780efb43d07f87eb041f2/W11"
+add1to100_url = "https://gist.githubusercontent.com/41023254/5cd2b6ab1160949f1dec6a286ffb9524/raw/6ad523c99f89acece49780efb43d07f87eb041f2/W11?"
 
 # 從 gist 取得程式碼
 add_src = open(add1to100_url).read()
@@ -554,6 +560,8 @@ def add(ev):
 # id 為 "add1to100" 的按鈕點按時, 執行 add 方法
 doc["add1to100"].bind('click', add)
 </script>
+</p>
+<p><!-- add 1 to 100 結束--></p>
 <!-- editor1 開始 -->
 <p><!-- 用來顯示程式碼的 editor 區域 --></p>
 <div id="kw_editor1" style="width: 600px; height: 300px;"></div>
